@@ -16,7 +16,7 @@ public class Main {
                 if(checkCommand1){
                     System.out.println("Месячные отчёты уже были считатны");
                 }else{
-                    for(int i = 1; i <= 4; i++){
+                    for(int i = 1; i <= 3; i++){
                         monthlyReport.loadFile(i, "resources/m.20210" + i + ".csv");
                     }
                 }
