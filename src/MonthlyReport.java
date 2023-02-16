@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 public class MonthlyReport {
     public ArrayList<Product> products = new ArrayList<>(); // вся информация считанная из отчёта
-//    public HashMap<Integer, ProfitAndExpence> profitAndExpencePerMonth = new HashMap<>();
     public HashMap<Integer, Integer> profitInMonth = new HashMap<>(); // месяц, доход
     public HashMap<Integer, Integer> expenceInMonth = new HashMap<>(); // месяц, расход
 
@@ -95,7 +94,7 @@ public class MonthlyReport {
             return Files.readString(Path.of(path));
         } catch (IOException e){
             System.out.println("Невозможно прочитать файл с месячным отчётом. Возможно файл не находится в нужной директории.");
-            return null;
+            return "";
         }
     }
 }

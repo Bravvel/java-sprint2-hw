@@ -5,27 +5,28 @@ public class Main {
         MonthlyReport monthlyReport = new MonthlyReport();
         YearlyReport yearlyReport = new YearlyReport();
         Scanner scanner = new Scanner(System.in);
-        Boolean checkCommand1 = false, checkCommand2 = false; // нужны для проверки того, были ли считаны отчёты, чтобы не считывать лишние данные
+        Boolean checkCommand1 = false;
+        Boolean checkCommand2 = false; // нужны для проверки того, были ли считаны отчёты, чтобы не считывать лишние данные
         while(true){
             printMenu();
-            int command = scanner.nextInt();
-            if(command == 1){
+            String command = scanner.nextLine();
+            if(command.equals("1")){
                 if(checkCommand1){
                     System.out.println("Месячные отчёты уже были считатны");
                 }else{
-                    for(int i = 1; i <=3; i++){
+                    for(int i = 1; i <= 3; i++){
                         monthlyReport.loadFile(i, "resources/m.20210" + i + ".csv");
                     }
                 }
                 checkCommand1 = true;
-            } else if(command == 2){
+            } else if(command.equals("2")){
                 if(checkCommand2){
                     System.out.println("Годовой отчёт уже был считан");
                 }else{
                     yearlyReport.loadFile(2021,"resources/y.2021.csv");
                 }
                 checkCommand2 = true;
-            } else if(command == 3){
+            } else if(command.equals("3")){
                 if(!checkCommand1 || !checkCommand2){
                     System.out.println("Годовой или месячные отчёты не были считаны, невозможно провести сверку.");
                     System.out.println("Пожалуйста, перед тем, как делать сверку, считайте годовой и месячные отчёты.");
@@ -37,13 +38,13 @@ public class Main {
                                 System.out.println("Не нашлось ошибок в отчёте за Январь. ");
                             } else if(i == 2){
                                 System.out.println("Не нашлось ошибок в отчёте за Февраль. ");
-                            } else if(i == 3){
+                            } else{
                                 System.out.println("Не нашлось ошибок в отчёте за Март. ");
                             }
                         }
                     }
                 }
-            } else if(command == 4){
+            } else if(command.equals("4")){
                 if(!checkCommand1){
                     System.out.println("Месячные отчёты не были считаны, невозможно вывести статистику по месячным отчётам.");
                     System.out.println("Пожалуйста, перед тем, как напечатать статистику, считайте месячные отчёты.");
@@ -52,14 +53,14 @@ public class Main {
                         monthlyReport.printMonthStatistics(i);
                     }
                 }
-            } else if(command == 5){
+            } else if(command.equals("5")){
                 if(!checkCommand2){
                     System.out.println("Годовой отчёт не был считан, невозможно вывести статистику по годовому отчёту.");
                     System.out.println("Пожалуйста, перед тем, как напечатать статистику, считайте годовой отчёт.");
                 } else{
                     yearlyReport.printStatistis(2021);
                 }
-            } else if(command == 0){
+            } else if(command.equals("0")){
                 break;
             } else{
                 System.out.println("Извините, такой команды пока что не существует");
