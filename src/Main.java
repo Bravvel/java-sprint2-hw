@@ -1,4 +1,6 @@
-import javax.security.auth.Destroyable;
+// Дмитрий, здравствуйте. Не знаю как с вами связаться, поэтому напишу послание в комментарии.
+// Я все критические ошибки исправил, но не знаю, как исправить одну не критическую.
+// Можете пожалуйста подсказать, как можно вынести  checkCommand1 и checkCommand2 в классы отчётов по годам и месяцам
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -14,7 +16,7 @@ public class Main {
                 if(checkCommand1){
                     System.out.println("Месячные отчёты уже были считатны");
                 }else{
-                    for(int i = 1; i <= 3; i++){
+                    for(int i = 1; i <= 4; i++){
                         monthlyReport.loadFile(i, "resources/m.20210" + i + ".csv");
                     }
                 }
