@@ -9,6 +9,7 @@ public class YearlyReport {
     public HashMap<Integer, Integer> incomePerMonth = new HashMap<>();// месяц, прибыль
     public HashMap<Integer, Integer> profitInMonth = new HashMap<>();// месяц, доход
     public HashMap<Integer, Integer> expenceInMonth = new HashMap<>();//месяц, расход
+    public Boolean checkInput = true; // проверка на то , есть ли ошибка в считывании файла
     public void loadFile(Integer year, String path){ //сохранение данных из файла
         String content = readFileContentsOrNull(path);
         String[] lines = content.split("\r?\n"); // month,amount,is_expense
@@ -85,10 +86,12 @@ public class YearlyReport {
 
     public String readFileContentsOrNull(String path){
         try{
+            checkInput = true;
             return Files.readString(Path.of(path));
         } catch (IOException e){
             System.out.println("Невозможно прочитать файл с годовым отчётом. Возможно файл не находится в нужной директории.");
             System.out.println("Проблемы с файлом в указанном пути " + path);
+            checkInput = false;
             return "";
         }
     }
